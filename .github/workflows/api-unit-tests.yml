@@ -25,13 +25,3 @@ jobs:
 
       - name: Run API tests
         run: npm test
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-report
-          path: |
-            coverage/
-            reports/
-          retention-days: 30
