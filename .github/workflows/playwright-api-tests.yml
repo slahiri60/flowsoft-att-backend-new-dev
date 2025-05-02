@@ -2,22 +2,15 @@ name: Playwright API Tests
 
 on:
   push:
-    branches: [main, master, develop]
+    branches: [main]
   pull_request:
-    branches: [main, master, develop]
+    branches: [main]
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
   api-tests:
     name: Run API Tests
     runs-on: ubuntu-latest
-
-    services:
-      # If your API tests need a database
-      mongodb:
-        image: mongo:4.4
-        ports:
-          - 27017:27017
 
     steps:
       - name: Checkout code
@@ -41,11 +34,6 @@ jobs:
         run: |
           cd _tests_/api-tests
           npx playwright install --with-deps chromium
-
-      - name: Start backend server
-        run: |
-          npm run start:test &
-          sleep 10  # Give the server time to start
 
       - name: Run Playwright API tests
         run: npm run test:api
