@@ -5,17 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server",
-    "test": "jest"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.js",
-      "**/?(*.)+(spec|test).js"
-    ]
+    "test": "jest",
+    "test:api": "cd _tests_/api-tests && npx playwright test --project=api",
+    "test:api:debug": "cd _tests_/api-tests && npx playwright test --project=api --debug"
   },
   "author": "Soumitra Lahiri",
   "license": "MIT",
@@ -28,6 +20,8 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
-    "supertest": "^7.1.0"
+    "supertest": "^7.1.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3"
   }
 }
